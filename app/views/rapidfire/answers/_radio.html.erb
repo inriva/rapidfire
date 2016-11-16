@@ -1,9 +1,20 @@
-<%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
 
-<%= f.label :answer_text, answer.question.question_text %>
-<%- answer.question.options.each do |option| %>
-  <%= f.label "answer_text_#{option}", option do %>
-    <%= f.radio_button :answer_text, option %>
-    <%= option %>
-  <% end %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= f.label :answer_text, answer.question.question_text %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%- answer.question.options.each do |option| %>
+        <%= f.label "answer_text_#{option}", option do %>
+            <%= f.radio_button :answer_text, option, :class=> 'radio' %>
+            <%= option %>
+        <% end %>
+    <% end %>
+    <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
+  </div>
+</div>
+
+
+

@@ -2,10 +2,14 @@
 <hr/>
 
 <%= form_for([@survey, @attempt_builder]) do |f| %>
+    <div class="row">
   <%- @attempt_builder.answers.each do |answer| %>
-    <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>
-      <%= render_answer_form_helper(answer, answer_form) %>
+          <div class="col-md-6">
+      <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>
+          <%= render_answer_form_helper(answer, answer_form) %>
+      <% end %>
+          </div>
     <% end %>
-  <% end %>
+    </div>
   <%= f.submit "Save" %>
 <% end %>
