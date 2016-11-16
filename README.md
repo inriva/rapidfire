@@ -2,6 +2,9 @@
 [![Code Climate](https://codeclimate.com/github/code-mancers/rapidfire/badges/gpa.svg)](https://codeclimate.com/github/code-mancers/rapidfire)
 [![Build Status](https://travis-ci.org/code-mancers/rapidfire.png?branch=master)](https://travis-ci.org/code-mancers/rapidfire)
 
+## Fork by inriva
+inriva.com
+
 One stop solution for all survey related requirements! Its tad easy!
 
 This gem supports **rails 3.2.13+**, **rails4** and **rails5** versions.
