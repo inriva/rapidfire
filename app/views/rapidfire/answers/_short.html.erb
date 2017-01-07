@@ -6,7 +6,7 @@
     <h3 class="panel-title"><%= f.label :answer_text, answer.question.question_text %></h3>
   </div>
   <div class="panel-body">
-    <%= f.text_field :answer_text %>
+    <%= f.text_field :answer_text, :class => 'form-control' %>
     <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
   </div>
 </div>

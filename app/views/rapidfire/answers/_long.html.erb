@@ -7,7 +7,7 @@
       <%= f.label :answer_text, answer.question.question_text %></h3>
   </div>
   <div class="panel-body">
-    <%= f.text_area :answer_text, :rows => 5 %>
+    <%= f.text_area :answer_text, :rows => 5, :class => 'form-control' %>
     <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
   </div>
 </div>
