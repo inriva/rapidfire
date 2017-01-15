@@ -1,10 +1,10 @@
 module Rapidfire
   class AttemptBuilder < Rapidfire::BaseService
-    attr_accessor :user, :survey, :questions, :answers, :params, :apply
+    attr_accessor :user, :survey, :questions, :answers, :params, :apply, :attempt_id
 
     def initialize(params = {})
       super(params)
-      build_attempt
+      build_attempt(params[:attempt_id])
     end
 
     def to_model
@@ -43,13 +43,19 @@ module Rapidfire
     end
 
     private
-    def build_attempt
-      if not Attempt.find_by_apply_id(apply.id).nil?
-        Attempt.find_by_apply_id(apply.id).destroy!
-      end
-      @attempt = Attempt.new(user: user, survey: survey, apply: apply)
-      @answers = @survey.questions.collect do |question|
-        @attempt.answers.build(question_id: question.id)
+    def build_attempt(attempt_id)
+      if attempt_id.present?
+        @attempt = Attempt.find(attempt_id)
+        self.answers = @attempt.answers
+        self.user = @attempt.user
+        self.survey = @attempt.survey
+        self.apply = @attempt.apply
+        self.questions = @survey.questions
+      else
+        @attempt = Attempt.new(user: user, survey: survey, apply: apply)
+        @answers = @survey.questions.collect do |question|
+          @attempt.answers.build(question_id: question.id)
+        end
       end
     end
 
