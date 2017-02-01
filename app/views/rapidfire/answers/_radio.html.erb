@@ -1,6 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">
+    <% if answer.question.rules[:presence] == "1" %>
+        <h3 class="panel-title required">
+    <% else %>
+        <h3 class="panel-title required">
+    <% end %>
       <%= f.label :answer_text, answer.question.question_text %>
     </h3>
   </div>

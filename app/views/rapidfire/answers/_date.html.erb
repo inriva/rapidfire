@@ -1,4 +1,12 @@
 <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
 
+<% if answer.question.rules[:presence] == "1" %>
+    <div class="form-group required">
+<% else %>
+    <div class="form-group">
+<% end %>
+
 <%= f.label :answer_text, answer.question.question_text %>
 <%= f.text_field :answer_text, :class => 'form-control' %>
+
+</div>
