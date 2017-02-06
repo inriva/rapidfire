@@ -1,4 +1,4 @@
-<h3><%= survey.new_record? ? "New Survey" : "Edit Survey" %></h3>
+<h3><%= survey.new_record? ? t('surveys.new_survey') : t('surveys.edit_survey') %></h3>
 
 <%= form_for survey do |f| %>
   <%- if survey.errors.any? %>
