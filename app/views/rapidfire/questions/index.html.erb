@@ -1,7 +1,8 @@
 <h2>
   <%= t('surveys.questions') %>
-  <%= link_to t('surveys.new_question'), new_survey_question_path(@survey) %>
 </h2>
+  <%= link_to t('surveys.new_question'), new_survey_question_path(@survey), :class=> 'btn btn-primary'%>
+
 <hr/>
 
 <table>
