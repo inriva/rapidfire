@@ -8,10 +8,10 @@
   </td>
   <td>
     <ul class="horizontal-list">
-      <li><%= link_to t('surveys.answer_questions'), new_survey_attempt_path(survey) %></li>
+      <li><%= link_to t('surveys.answer_questions'), new_survey_attempt_path(survey), :class => 'btn btn-primary'  %></li>
       <% if can_administer? %>
-        <li><%= link_to t('surveys.results'), [:results, survey] %></li>
-        <li><%= link_to t('common.delete'), survey, method: :delete %></li>
+        <li><%= link_to t('surveys.results'), [:results, survey], :class => 'btn btn-primary' %></li>
+        <li><%= link_to t('common.delete'), survey, method: :delete, :class => 'btn btn-default' %></li>
       <% end %>
     </ul>
   </td>

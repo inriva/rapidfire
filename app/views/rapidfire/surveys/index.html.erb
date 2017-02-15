@@ -1,9 +1,10 @@
 <h2>
-  Surveys
-  <% if can_administer? %>
-    <%= link_to t('surveys.new_survey'), new_survey_path %>
-  <% end %>
+  <%= t('common.surveys') %>
 </h2>
+  <% if can_administer? %>
+    <%= link_to t('surveys.new_survey'), new_survey_path, {:class => 'btn btn-primary'} %>
+  <% end %>
+
 <hr/>
 
 <table>
@@ -13,7 +14,7 @@
   </colgroup>
   <thead>
     <tr>
-      <th>Survey</th>
+      <th><%= t('application_steps.survey') %></th>
       <th></th>
     </tr>
   </thead>
