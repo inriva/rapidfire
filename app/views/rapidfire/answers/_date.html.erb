@@ -10,9 +10,7 @@
     </h3>
   </div>
   <div class="panel-body">
-    <div class="form-control">
-      <%= f.text_field :answer_text, {:class => 'form-control datepicker', :data => {:provide => 'datepicker'}} %>
-    </div>
+    <%= f.text_field :answer_text, {:class => 'form-control datepicker', :data => {:provide => 'datepicker'}} %>
     <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
   </div>
 </div>
