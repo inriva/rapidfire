@@ -10,3 +10,4 @@ de:
         answer_maximum_length: "Maximale Länge des Antworttextes"
         answer_greater_than_or_equal_to: "Antwort ist größer als oder gleich"
         answer_less_than_or_equal_to: "Antwort ist kleiner als oder gleich"
+        weight: "Gewichtung"

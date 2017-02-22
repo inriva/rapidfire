@@ -5,6 +5,8 @@ module Rapidfire
 
     default_scope { order(:position) }
 
+    acts_as_list scope: :survey
+
     validates :survey, :question_text, :presence => true
     serialize :validation_rules
 
