@@ -1,9 +1,9 @@
 <tr id="question_<%= question.id %>">
   <td><%= question.question_text %></td>
   <td>
-    <ul class="btn-group">
-      <li><%= link_to t('common.edit'), [:edit, question.survey, question], :class => 'btn btn-primary' %></li>
-      <li><%= link_to t('common.delete'), [question.survey, question], method: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' %></li>
-    </ul>
+    <div class="btn-group">
+      <%= link_to t('common.edit'), [:edit, question.survey, question], :class => 'btn btn-primary' %>
+      <%= link_to t('common.delete'), [question.survey, question], method: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' %>
+    </div>
   </td>
 </tr>
