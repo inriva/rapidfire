@@ -1,7 +1,7 @@
 module Rapidfire
   class Survey < ActiveRecord::Base
     has_many  :questions
-    belongs_to :job
+    has_many :jobs
     validates :name, :presence => true
 
     if Rails::VERSION::MAJOR == 3
