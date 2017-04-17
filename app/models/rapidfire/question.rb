@@ -10,7 +10,7 @@ module Rapidfire
     validates :survey, :question_text, :presence => true
     serialize :validation_rules
 
-    pass_type :default, :score, :ko, :distance
+    #pass_type :default, :score, :ko, :distance
 
     if Rails::VERSION::MAJOR == 3
       attr_accessible :survey, :question_text, :validation_rules, :answer_options, :weight, :musthave, :pass_type
