@@ -1,3 +1,3 @@
 module Rapidfire
-  VERSION = '3.0.1.16'
+  VERSION = '3.0.1.17'
 end
