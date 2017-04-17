@@ -75,7 +75,7 @@ module Rapidfire
     def from_question_to_attributes(question)
       self.type = question.type
       self.survey  = question.survey
-      self.question_text   = question.question_text
+      self.question_text = question.question_text
       self.weight = question.weight
       self.musthave = question.musthave
       self.pass_type = question.pass_type

@@ -8,6 +8,7 @@ module Rapidfire
     acts_as_list scope: :survey
 
     validates :survey, :question_text, :presence => true
+    validates_length_of :qualification_code, maximum: 30
     serialize :validation_rules
 
     if Rails::VERSION::MAJOR == 3
