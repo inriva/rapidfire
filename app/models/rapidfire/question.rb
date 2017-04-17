@@ -38,10 +38,8 @@ module Rapidfire
       if rules[:minimum].present? || rules[:maximum].present?
         min_max = { minimum: rules[:minimum].to_i }
         min_max[:maximum] = rules[:maximum].to_i if rules[:maximum].present?
+
         answer.validates_length_of :answer_text, min_max
-      end
-
-
       end
     end
   end
