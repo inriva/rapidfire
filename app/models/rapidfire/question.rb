@@ -10,8 +10,6 @@ module Rapidfire
     validates :survey, :question_text, :presence => true
     serialize :validation_rules
 
-    #pass_type :default, :score, :ko, :distance
-
     if Rails::VERSION::MAJOR == 3
       attr_accessible :survey, :question_text, :validation_rules, :answer_options, :weight, :musthave, :pass_type
     end
@@ -36,14 +34,13 @@ module Rapidfire
       if rules[:presence] == "1"
         answer.validates_presence_of :answer_text
       end
-      if pass_type.nil?
-        if rules[:minimum].present? || rules[:maximum].present?
-          min_max = { minimum: rules[:minimum].to_i }
-          min_max[:maximum] = rules[:maximum].to_i if rules[:maximum].present?
 
-          answer.validates_length_of :answer_text, min_max
-        end
-      else
+      if rules[:minimum].present? || rules[:maximum].present?
+        min_max = { minimum: rules[:minimum].to_i }
+        min_max[:maximum] = rules[:maximum].to_i if rules[:maximum].present?
+        answer.validates_length_of :answer_text, min_max
+      end
+
 
       end
     end
