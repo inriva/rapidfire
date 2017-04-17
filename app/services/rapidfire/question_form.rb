@@ -22,7 +22,7 @@ module Rapidfire
       :type, :question_text, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to,
-      :weight, :musthave, :pass_type
+      :weight, :musthave, :pass_type, :qualification_code
 
     delegate :valid?, :errors, :to => :question
 
@@ -61,6 +61,7 @@ module Rapidfire
         :weight => weight,
         :musthave => musthave,
         :pass_type => pass_type,
+        :qualification_code => qualification_code,
         :validation_rules => {
           :presence => answer_presence,
           :minimum  => answer_minimum_length,
@@ -75,9 +76,10 @@ module Rapidfire
       self.type = question.type
       self.survey  = question.survey
       self.question_text   = question.question_text
-      self.weight = question.weight,
-      self.musthave = question.musthave,
-      self.pass_type = question.pass_type,
+      self.weight = question.weight
+      self.musthave = question.musthave
+      self.pass_type = question.pass_type
+      self.qualification_code = question.qualification_code
       self.answer_options  = question.answer_options
       self.answer_presence = question.rules[:presence]
       self.answer_minimum_length = question.rules[:minimum]
