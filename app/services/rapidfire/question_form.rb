@@ -60,7 +60,6 @@ module Rapidfire
         :answer_options => answer_options,
         :weight => weight,
         :musthave => musthave,
-        :pass_type => pass_type,
         :qualification_code => qualification_code,
         :validation_rules => {
           :presence => answer_presence,
