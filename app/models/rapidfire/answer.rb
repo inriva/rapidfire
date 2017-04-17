@@ -7,7 +7,7 @@ module Rapidfire
     validate  :verify_answer_text, :if => "question.present?"
 
     if Rails::VERSION::MAJOR == 3
-      attr_accessible :question_id, :attempt, :answer_text
+      attr_accessible :question_id, :attempt, :answer_text, :score, :passed
     end
 
     private

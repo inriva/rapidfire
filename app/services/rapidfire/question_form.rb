@@ -11,6 +11,7 @@ module Rapidfire
        Rapidfire::Questions::Short,
       ]
 
+
     QUESTION_TYPES = AVAILABLE_QUESTIONS.inject({}) do |result, question|
       question_name = question.to_s.split("::").last
       result[question_name] = question.to_s
@@ -21,7 +22,7 @@ module Rapidfire
       :type, :question_text, :answer_options, :answer_presence,
       :answer_minimum_length, :answer_maximum_length,
       :answer_greater_than_or_equal_to, :answer_less_than_or_equal_to,
-      :weight, :musthave
+      :weight, :musthave, :pass_type
 
     delegate :valid?, :errors, :to => :question
 
@@ -59,6 +60,7 @@ module Rapidfire
         :answer_options => answer_options,
         :weight => weight,
         :musthave => musthave,
+        :pass_type => pass_type,
         :validation_rules => {
           :presence => answer_presence,
           :minimum  => answer_minimum_length,
@@ -75,6 +77,7 @@ module Rapidfire
       self.question_text   = question.question_text
       self.weight = question.weight,
       self.musthave = question.musthave,
+      self.pass_type = question.pass_type,
       self.answer_options  = question.answer_options
       self.answer_presence = question.rules[:presence]
       self.answer_minimum_length = question.rules[:minimum]

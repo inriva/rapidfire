@@ -51,6 +51,13 @@
     <%= f.text_field :answer_less_than_or_equal_to %>
   </div>
 
+    <h4><%= t('common.pass_type')%></h4>
+
+  <div class="form-group">
+    <%= f.label :pass_type %>
+    <%= f.select :pass_type, Answer.pass_type %>
+  </div>
+
   <h4><%= t('common.weight')%></h4>
 
   <div class="form-group">
