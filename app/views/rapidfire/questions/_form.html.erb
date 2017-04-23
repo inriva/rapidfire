@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <%= f.label :position %>
-    <%= f.text_field :position %>
+    <%= f.number_field(:position, in: 1..@question.survey.questions.count, step: 1) %>
   </div>
 
   <div class="form-group">
