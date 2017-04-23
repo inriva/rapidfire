@@ -15,7 +15,7 @@
       <% end %>
         <%= link_to raw('<span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp;') + t('surveys.answer_questions'), new_survey_attempt_path(survey), :class => 'btn btn-primary'  %>
       <% if can_administer? %>
-          <%= link_to raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;') + t('common.delete'), survey, method: :delete, :class => 'btn btn-danger' %>
+          <%= link_to raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;') + t('common.delete'), survey, mmethod: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' %>
       <% end %>
     </div>
   </td>
