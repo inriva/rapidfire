@@ -16,12 +16,17 @@
       <div class="panel-heading"><h3><%= survey.new_record? ? t('surveys.new_survey') : t('surveys.edit_survey') %></h3></div>
       <div class="panel-body">
         <div class="form-group">
-          <label><%= f.label :name %></label>
+          <label><%= f.label :name %></label><br/>
           <%= f.text_field :name %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/survey.weight') %></label>
+          <p class="help-block"><%= t('surveys.help.survey.weight')%></p>
+          <%= f.number_field :weight %>
         </div>
       </div>
     </div>
-
 
     <%= f.submit t('common.save'), :class => 'btn btn-primary' %>
 <% end %>
