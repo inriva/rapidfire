@@ -3,10 +3,6 @@
   <td><%= question.question_text %></td>
   <td>
     <div class="btn-group">
-      <%- link_to survey_question_path(question.id), {:class => 'btn btn-primary'} do %>
-          <span class="glyphicon.glyphicon-search"></span>&nbsp;
-          <%= t('common.show') %>
-      <% end %>
       <%- link_to [:edit, question.survey, question], {:class => 'btn btn-primary'} do %>
           <span class="glyphicon.glyphicon-search"></span>&nbsp;
           <%= t('common.edit') %>
@@ -25,5 +21,5 @@
 
 <ul class="nav nav-pills">
   <li><%= link_to t('common.show'), question %></li>
-  <li><%= link_to t('common.back'), survey_questions_path(question.survey) %></li>
+  <li><%= link_to t('common.back'), survey_questions_path(question.survey.id) %></li>
 </ul>
