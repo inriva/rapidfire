@@ -3,7 +3,7 @@
   <td><%= question.question_text %></td>
   <td>
     <div class="btn-group">
-      <%- link_to survey_question_path(question), {:class => 'btn btn-primary'} do %>
+      <%- link_to survey_question_path(question.id), {:class => 'btn btn-primary'} do %>
           <span class="glyphicon.glyphicon-search"></span>&nbsp;
           <%= t('common.show') %>
       <% end %>
