@@ -9,10 +9,6 @@
 <hr/>
 
 <table class="table table-striped">
-  <colgroup>
-    <col>
-    <col width="250">
-  </colgroup>
   <thead>
     <tr>
       <th><%= t('surveys.position') %></th>
@@ -24,3 +20,7 @@
     <%= render partial: "question", collection: @questions %>
   </tbody>
 </table>
+
+<ul class="nav nav-pills">
+  <li><%= link_to t('common.back'), surveys_path %></li>
+</ul>

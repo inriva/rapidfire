@@ -1,7 +1,7 @@
 de:
   activerecord:
     attributes:
-      question:
+      "rapidfire/question":
         type: "Typ"
         question_text: "Fragetext"
         answer_options: "Antwortoptionen"
