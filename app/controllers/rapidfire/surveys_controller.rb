@@ -10,6 +10,10 @@ module Rapidfire
       @survey = Survey.new
     end
 
+    def edit
+      @survey = Survey.find(params[:id])
+    end
+
     def create
       @survey = Survey.new(survey_params)
       if @survey.save
@@ -21,6 +25,20 @@ module Rapidfire
         respond_to do |format|
           format.html { render :new }
           format.js
+        end
+      end
+    end
+
+    def update
+      @survey = Survey.find(params[:id])
+
+      respond_to do |format|
+        if @survey.update_attributes(params[:survey])
+          format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @survey.errors, status: :unprocessable_entity }
         end
       end
     end
