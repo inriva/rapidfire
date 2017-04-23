@@ -2,8 +2,22 @@
   <td><%= question.question_text %></td>
   <td>
     <div class="btn-group">
-      <%= link_to t('common.edit'), [:edit, question.survey, question], :class => 'btn btn-primary' %>
-      <%= link_to t('common.delete'), [question.survey, question], method: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' %>
+      <%- link_to backend_applicant_path(applicant), {:class => 'btn btn-primary'} do %>
+          <span class="glyphicon.glyphicon-search"></span>
+          <%= t('common.show') %>
+      <% end %>
+      <%- link_to [:edit, question.survey, question], {:class => 'btn btn-primary'} do %>
+          <span class="glyphicon.glyphicon-search"></span>
+          <%= t('common.edit') %>
+      <% end %>
+      <%- link_to [question.survey, question], method: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' do %>
+          <span class="glyphicon.glyphicon-search"></span>
+          <%= t('common.delete') %>
+      <% end %>
+      <%- link_to [question.survey, question], method: :delete, confirm: t('common.are_you_sure'), :class => 'btn btn-danger' do %>
+          <span class="glyphicon.glyphicon-search"></span>
+          <%= t('common.delete') %>
+      <% end %>
     </div>
   </td>
 </tr>
