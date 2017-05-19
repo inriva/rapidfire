@@ -1,10 +1,11 @@
 <h2>
   <%= t('surveys.questions') %>
 </h2>
-  <%- link_to new_survey_question_path(@survey), :class=> 'btn btn-primary' do %>
-    <span class="glyphicon.glyphicon-plus"></span>&nbsp;
-    <%= t('surveys.new_question') %>
-  <% end %>
+
+<%= link_to new_survey_question_path(@survey), :class=> 'btn btn-primary' do %>
+  <span class="glyphicon.glyphicon-plus"></span>&nbsp;
+  <%= t('surveys.new_question') %>
+<% end %>
 
 <hr/>
 
