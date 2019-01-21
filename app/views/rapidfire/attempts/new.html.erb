@@ -1,7 +1,6 @@
-<h2>Please answer these Questions</h2>
 <hr/>
 
-<%= form_for([@survey, @attempt_builder]) do |f| %>
+<%= form_for([@survey, @attempt_builder], html: { class: 'survey'}) do |f| %>
     <div class="row">
   <%- @attempt_builder.answers.each do |answer| %>
           <div class="col-md-6">
@@ -11,5 +10,5 @@
           </div>
     <% end %>
     </div>
-  <%= f.submit "Save" %>
+  <%= f.submit t('common.save'), class: 'btn btn-primary' %>
 <% end %>
