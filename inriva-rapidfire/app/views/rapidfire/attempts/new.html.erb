@@ -1,0 +1,14 @@
+<hr/>
+
+<%= form_for([@survey, @attempt_builder], html: { class: 'survey'}) do |f| %>
+    <div class="row">
+  <%- @attempt_builder.answers.each do |answer| %>
+          <div class="col-md-6">
+      <%= f.fields_for("#{answer.question.id}", answer) do |answer_form| %>
+          <%= render_answer_form_helper(answer, answer_form) %>
+      <% end %>
+          </div>
+    <% end %>
+    </div>
+  <%= f.submit t('common.save'), class: 'btn btn-primary' %>
+<% end %>

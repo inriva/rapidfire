@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <% if answer.question.rules[:presence] == "1" %>
+        <h3 class="panel-title required">
+    <% else %>
+        <h3 class="panel-title ">
+    <% end %>
+      <%= f.label :answer_text, answer.question.question_text %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%= f.select :answer_text, answer.question.options, :prompt => t('common.please_select'), :class => 'form-control' %>
+    <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
+  </div>
+</div>

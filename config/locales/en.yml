@@ -1,0 +1,11 @@
+en:
+  rapidfire:
+    attempts:
+      header: "Please answer these Questions"
+      save: "Save"
+    questions:
+      header: "Questions"
+      new: "New Question"
+      question: "Question"
+      back: "Back to surveys"
+

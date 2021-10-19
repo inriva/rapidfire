@@ -1,0 +1,27 @@
+<h2>
+  <%= t('common.surveys') %>
+</h2>
+  <% if can_administer? %>
+    <%= link_to t('surveys.new_survey'), new_survey_path, {:class => 'btn btn-primary'} %>
+  <% end %>
+
+<hr/>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th><%= t('application_steps.survey') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "survey", collection: @surveys %>
+  </tbody>
+</table>
+
+<p>
+    <%= link_to t('common.back'), '/backend/', {:class => 'btn btn-primary'} %>
+</p>
+
+

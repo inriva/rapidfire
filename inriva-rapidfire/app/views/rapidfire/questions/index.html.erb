@@ -1,0 +1,27 @@
+<h2>
+  <%= t('surveys.questions') %>
+</h2>
+
+<%= link_to new_survey_question_path(@survey), :class=> 'btn btn-primary' do %>
+  <span class="glyphicon.glyphicon-plus"></span>&nbsp;
+  <%= t('surveys.new_question') %>
+<% end %>
+
+<hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('surveys.position') %></th>
+      <th><%= t('surveys.question') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "question", collection: @questions %>
+  </tbody>
+</table>
+
+<ul class="nav nav-pills">
+  <li><%= link_to t('common.back'), surveys_path %></li>
+</ul>

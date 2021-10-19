@@ -1,0 +1,107 @@
+<h3><%= t('surveys.edit_question') %></h3>
+
+<%= form_for form, as: :question, url: url, method: method do |f| %>
+  <%- unless form.errors.empty? %>
+    <ul>
+      <%- form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4><%= t('surveys.question')%></h4></div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.type') %></label>
+          <p class="help-block"><%= t('surveys.help.question.type')%></p>
+          <%= f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES, {}, id: "question_type" %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.text') %></label><br/>
+          <%= f.text_field :question_text %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.position') %></label>
+          <p class="help-block"><%= t('surveys.help.question.position')%></p>
+          <%= f.number_field(:position, in: 1..@survey.questions.count, step: 1) %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_options') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_options')%></p>
+          <%= f.text_area :answer_options, rows: 5 %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4><%= t('surveys.validation')%></h4></div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_presence') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_presence')%></p>
+          <%= f.check_box :answer_presence %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_minimum_length') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_minimum_length')%></p>
+          <%= f.text_field :answer_minimum_length %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_maximum_length') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_maximum_length')%></p>
+          <%= f.text_field :answer_maximum_length %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_greater_than_or_equal_to') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_greater_than_or_equal_to')%></p>
+          <%= f.text_field :answer_greater_than_or_equal_to %>
+        </div>
+
+        <div class="form-group">
+          <label><%= t('activerecord.attributes.rapidfire/question.answer_less_than_or_equal_to') %></label>
+          <p class="help-block"><%= t('surveys.help.question.answer_less_than_or_equal_to')%></p>
+          <%= f.text_field :answer_less_than_or_equal_to %>
+        </div>
+      </div>
+    </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h4><%= t('surveys.weight')%></h4></div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label><%= t('activerecord.attributes.rapidfire/question.weight') %></label>
+        <p class="help-block"><%= t('surveys.help.question.weight')%></p>
+        <%= f.number_field :weight %>
+      </div>
+
+      <div class="form-group">
+        <label><%= t('activerecord.attributes.rapidfire/question.musthave') %></label>
+        <p class="help-block"><%= t('surveys.help.question.musthave')%></p>
+        <%= f.check_box :musthave %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h4><%= t('surveys.attribution')%></h4></div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label><%= t('activerecord.attributes.rapidfire/question.qualification_code') %></label>
+        <p class="help-block"><%= t('surveys.help.question.qualification_code')%></p>
+        <%= f.text_field :qualification_code, :maxlength=>'30' %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit submit_text, :class => 'btn btn-primary' %>
+<% end %>
+

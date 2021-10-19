@@ -1,0 +1,43 @@
+<h1>Results</h1>
+
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60%
+  </div>
+</div>
+<%- @survey_results.each do |result| %>
+  <div>
+    <h4><%= result.question.question_text %></h4>
+    <p>
+      <%- if result.results.is_a?(Array) %>
+        <ol>
+          <%- result.results.each do |answer| %>
+              <li><span class="badge"><%= answer %></span></li>
+          <% end %>
+        </ol>
+      <% elsif result.results.is_a?(Hash) %>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th><%= t('surveys.option') %></th>
+              <th><%= t('surveys.count') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- result.results.each do |option, count| %>
+              <tr>
+                <td><%= option %></td>
+                <td><span class="badge"><%= count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+  </div>
+<% end %>
+
+<ul class="nav nav-pills">
+  <li><%= link_to t('common.back'), surveys_path %></li>
+</ul>
+
