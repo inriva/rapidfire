@@ -7,7 +7,7 @@ inriva.com
 
 One stop solution for all survey related requirements! Its tad easy!
 
-This gem supports **rails 3.2.13+**, **rails4** and **rails5** versions.
+This gem supports **rails 4.2.0+**, **rails 5** and **rails 6** with **ruby 2.4** and later.
 
 You can see a demo of this gem [here](https://rapidfire.herokuapp.com).
 And the source code of demo [here](https://github.com/code-mancers/rapidfire-demo).
@@ -30,6 +30,10 @@ And then execute:
 And if you want to customize rapidfire views, you can do
 
     $ bundle exec rails generate rapidfire:views
+
+If you want to customize rapidfire locales (i18n) files, you can do
+
+    $ bundle exec rails generate rapidfire:locales
 
 ## Usage
 

@@ -1,17 +1,17 @@
 module Rapidfire
   class SurveysController < Rapidfire::ApplicationController
-    before_filter :authenticate_administrator!, except: :index
+    before_action :authenticate_administrator!, except: :index
 
     def index
-      @surveys = Survey.all
+      @surveys = if defined?(Kaminari)
+        Survey.page(params[:page])
+      else
+        Survey.all
+      end
     end
 
     def new
       @survey = Survey.new
-    end
-
-    def edit
-      @survey = Survey.find(params[:id])
     end
 
     def create
@@ -29,16 +29,21 @@ module Rapidfire
       end
     end
 
+    def edit
+      @survey = Survey.find(params[:id])
+    end
+
     def update
       @survey = Survey.find(params[:id])
-
-      respond_to do |format|
-        if @survey.update_attributes(params[:survey])
-          format.html { redirect_to survey_questions_path(@survey), notice: 'Survey was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @survey.errors, status: :unprocessable_entity }
+      if @survey.update(survey_params)
+        respond_to do |format|
+          format.html { redirect_to surveys_path }
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { render :edit }
+          format.js
         end
       end
     end
@@ -68,11 +73,7 @@ module Rapidfire
     private
 
     def survey_params
-      if Rails::VERSION::MAJOR >= 4
-        params.require(:survey).permit(:name)
-      else
-        params[:survey]
-      end
+      params.require(:survey).permit(:name, :introduction, :after_survey_content)
     end
   end
 end

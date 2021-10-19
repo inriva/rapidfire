@@ -13,20 +13,21 @@ module Rapidfire
 
     def save!(options = {})
       params.each do |question_id, answer_attributes|
-        if answer = @attempt.answers.find { |a| a.question_id.to_s == question_id.to_s }
-          text = answer_attributes[:answer_text]
+        answer = @attempt.answers.find { |a| a.question_id.to_s == question_id.to_s }
+        next unless answer
 
-          # in case of checkboxes, values are submitted as an array of
-          # strings. we will store answers as one big string separated
-          # by delimiter.
-          answer.answer_text =
-            if text.is_a?(Array)
-              stripped_answers = strip_checkbox_answers(text)
-              stripped_answers.join(Rapidfire.answers_delimiter)
-            else
-              text
-            end
-        end
+        text = answer_attributes[:answer_text]
+
+        # in case of checkboxes, values are submitted as an array of
+        # strings. we will store answers as one big string separated
+        # by delimiter.
+        text = text.values if text.is_a?(ActionController::Parameters)
+        answer.answer_text =
+          if text.is_a?(Array)
+            strip_checkbox_answers(text).join(Rapidfire.answers_delimiter)
+          else
+            text
+          end
       end
 
       @attempt.save!(options)
@@ -59,8 +60,8 @@ module Rapidfire
       end
     end
 
-    def strip_checkbox_answers(text)
-      text.reject(&:blank?).reject { |t| t == "0" }
+    def strip_checkbox_answers(answers)
+      answers.reject(&:blank?).reject { |t| t == "0" }
     end
   end
 end

@@ -11,10 +11,6 @@ module Rapidfire
     validates_length_of :qualification_code, maximum: 30
     serialize :validation_rules
 
-    if Rails::VERSION::MAJOR == 3
-      attr_accessible :survey, :question_text, :position, :validation_rules, :answer_options, :weight, :musthave, :qualification_code
-    end
-
     def self.inherited(child)
       child.instance_eval do
         def model_name

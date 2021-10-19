@@ -28,7 +28,15 @@
           <p class="help-block"><%= t('surveys.help.question.position')%></p>
           <%= f.number_field(:position, in: 1..@survey.questions.count, step: 1) %>
         </div>
+        <div class="form-group">
+          <%= f.label :placeholder %>
+          <%= f.text_field :placeholder %>
+        </div>
 
+        <div class="form-group">
+          <%= f.label :default_text %>
+          <%= f.text_field :default_text %>
+        </div>
         <div class="form-group">
           <label><%= t('activerecord.attributes.rapidfire/question.answer_options') %></label>
           <p class="help-block"><%= t('surveys.help.question.answer_options')%></p>
@@ -37,6 +45,8 @@
       </div>
     </div>
 
+    <h4>Other options</h4>
+    <hr/>
 
     <div class="panel panel-default">
       <div class="panel-heading"><h4><%= t('surveys.validation')%></h4></div>
@@ -102,6 +112,6 @@
     </div>
   </div>
 
-  <%= f.submit submit_text, :class => 'btn btn-primary' %>
+  <%= f.submit submit_text, :class => 'button button--default' %>
 <% end %>
 

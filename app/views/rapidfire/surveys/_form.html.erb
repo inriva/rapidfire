@@ -10,6 +10,18 @@
   <% end %>
 
 
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <%= f.label :after_survey_content %>
+  <%= f.text_area :after_survey_content %>
 
 
     <div class="panel panel-default">
@@ -28,9 +40,9 @@
       </div>
     </div>
 
-    <%= f.submit t('common.save'), :class => 'btn btn-primary' %>
+    <%= f.submit t('common.save'), :class => 'button button--default' %>
 <% end %>
 
 <ul class="nav nav-pills">
-  <li><%= link_to t('common.back'), surveys_path, {:class => 'btn btn-default'} %></li>
+  <li><%= link_to t('common.back'), surveys_path, {:class => 'button button--default'} %></li>
 </ul>
