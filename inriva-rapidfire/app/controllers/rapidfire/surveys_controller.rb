@@ -33,7 +33,7 @@ module Rapidfire
       @survey = Survey.find(params[:id])
 
       respond_to do |format|
-        if @survey.update_attributes(params[:survey])
+        if @survey.update(params[:survey])
           format.html { redirect_to survey_questions_path(@survey), notice: 'Survey was successfully updated.' }
           format.json { head :no_content }
         else

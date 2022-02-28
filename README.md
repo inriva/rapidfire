@@ -7,7 +7,7 @@ inriva.com
 
 One stop solution for all survey related requirements! Its tad easy!
 
-This gem supports **rails 4.2.0+**, **rails 5** and **rails 6** with **ruby 2.4** and later.
+This gem supports  **rails 6.1** with **ruby 2.4** and later.
 
 You can see a demo of this gem [here](https://rapidfire.herokuapp.com).
 And the source code of demo [here](https://github.com/code-mancers/rapidfire-demo).
