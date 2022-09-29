@@ -29,12 +29,12 @@
           <%= f.number_field(:position, in: 1..@survey.questions.count, step: 1) %>
         </div>
         <div class="form-group">
-          <%= f.label :placeholder %>
+          <label><%= t('activerecord.attributes.rapidfire/question.placeholder') %></label>
           <%= f.text_field :placeholder %>
         </div>
 
         <div class="form-group">
-          <%= f.label :default_text %>
+          <label><%= t('activerecord.attributes.rapidfire/question.default_text') %></label>
           <%= f.text_field :default_text %>
         </div>
         <div class="form-group">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <h4>Other options</h4>
+    <h4>Options</h4>
     <hr/>
 
     <div class="panel panel-default">
