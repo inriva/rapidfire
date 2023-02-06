@@ -1,7 +1,7 @@
 module Rapidfire
   class Attempt < ActiveRecord::Base
     belongs_to :survey
-    belongs_to :apply
+    belongs_to :apply, optional: true
     has_many   :answers, inverse_of: :attempt, autosave: true
 
     if Rails::VERSION::MAJOR >= 5
