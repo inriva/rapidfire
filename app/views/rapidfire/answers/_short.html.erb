@@ -5,10 +5,10 @@
     <% else %>
         <h3 class="panel-title required">
     <% end %>
-      <%= f.label :answer_text, answer.question.question_text %></h3>
+      <%= f.label :answer_text, answer.question.question_text.html_safe %></h3>
   </div>
   <div class="panel-body">
-    <%= f.text_field :answer_text, :class => 'form-control' %>
+    <%= f.text_field :answer_text, value: answer.answer_text || answer.question.default_text, placeholder: answer.question.placeholder, :class => 'form-control' %>
     <%= render partial: "rapidfire/answers/errors", locals: {answer: answer} %>
   </div>
 </div>

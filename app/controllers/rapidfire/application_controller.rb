@@ -4,7 +4,6 @@ module Rapidfire
       layout Rapidfire.layout
     end
 
-
     helper_method :can_administer?
 
     def authenticate_administrator!
@@ -15,8 +14,12 @@ module Rapidfire
 
     # Override prefixes to consider the scoped.
     # for method current_user
-    def scoped
-      :user
+    def rapidfire_scoped
+      if !defined?(super)
+        :user
+      else
+        super
+      end
     end
   end
 end

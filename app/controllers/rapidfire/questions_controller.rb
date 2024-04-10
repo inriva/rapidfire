@@ -55,7 +55,7 @@ module Rapidfire
     end
 
     def find_survey!
-      @survey = Survey.find(params[:survey_id])
+      @survey = Rapidfire::Survey.find(params[:survey_id])
     end
 
     def find_question!
@@ -63,7 +63,7 @@ module Rapidfire
     end
 
     def index_location
-      survey_questions_url(@survey)
+      rapidfire.survey_questions_url(@survey)
     end
 
     def question_params

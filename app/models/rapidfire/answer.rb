@@ -1,5 +1,5 @@
 module Rapidfire
-  class Answer < ActiveRecord::Base
+  class Answer < ApplicationRecord
     belongs_to :question
     belongs_to :attempt, inverse_of: :answers
 
@@ -8,6 +8,11 @@ module Rapidfire
 
     def qualification_code
       self.question.qualification_code
+    end
+
+    if "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}" >= "5.2"
+      has_one_attached :file
+      has_many_attached :files
     end
 
     private

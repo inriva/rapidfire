@@ -1,5 +1,5 @@
 module Rapidfire
-  class Question < ActiveRecord::Base
+  class Question < ApplicationRecord
     belongs_to :survey, :inverse_of => :questions
     has_many   :answers
 
@@ -9,6 +9,7 @@ module Rapidfire
 
     validates :survey, :question_text, :presence => true
     validates_length_of :qualification_code, maximum: 30
+    validate :type_can_change
     serialize :validation_rules
 
     def self.inherited(child)
@@ -22,14 +23,37 @@ module Rapidfire
     end
 
     def rules
-      validation_rules || {}
+      validation_rules.present? ? validation_rules.symbolize_keys : {}
+    end
+
+    def validation_rules=(val)
+      super(val.stringify_keys)
     end
 
     # answer will delegate its validation to question, and question
     # will inturn add validations on answer on the fly!
     def validate_answer(answer)
       if rules[:presence] == "1"
-        answer.validates_presence_of :answer_text
+        case self
+        when Rapidfire::Questions::File
+          if Rails::VERSION::MAJOR >= 6
+            answer.validates_presence_of :file
+          else
+            if !answer.file.attached?
+              answer.errors.add(:file, :blank)
+            end
+          end
+        when Rapidfire::Questions::MultiFile
+          if Rails::VERSION::MAJOR >= 6
+            answer.validates_presence_of :files
+          else
+            if !answer.files.attached?
+              answer.errors.add(:files, :blank)
+            end
+          end
+        else
+          answer.validates_presence_of :answer_text
+        end
       end
 
       if rules[:minimum].present? || rules[:maximum].present?
@@ -37,6 +61,12 @@ module Rapidfire
         min_max[:maximum] = rules[:maximum].to_i if rules[:maximum].present?
 
         answer.validates_length_of :answer_text, min_max
+      end
+    end
+
+    def type_can_change
+      if type_changed? && answers.any?
+        errors.add(:type, "cannot change after answers have been added")
       end
     end
   end

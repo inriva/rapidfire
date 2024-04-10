@@ -9,8 +9,10 @@ module Rapidfire
        Rapidfire::Questions::Radio,
        Rapidfire::Questions::Select,
        Rapidfire::Questions::Short,
+       Rapidfire::Questions::Information,
+       Rapidfire::Questions::File,
+       Rapidfire::Questions::MultiFile,
       ]
-
 
     QUESTION_TYPES = AVAILABLE_QUESTIONS.inject({}) do |result, question|
       question_name = question.to_s.split("::").last
@@ -55,6 +57,7 @@ module Rapidfire
 
     def to_question_params
       {
+        :type => type,
         :survey => survey,
         :question_text  => question_text,
         :position => position,

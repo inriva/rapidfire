@@ -1,5 +1,5 @@
 module Rapidfire
-  class Attempt < ActiveRecord::Base
+  class Attempt < ApplicationRecord
     belongs_to :survey
     belongs_to :apply, optional: true
     has_many   :answers, inverse_of: :attempt, autosave: true
